@@ -3,3 +3,4 @@ pandas
 fpdf
 openpyxl
 num2words
+XlsxWriter
