@@ -160,109 +160,49 @@ with st.sidebar:
 st.set_page_config(page_title="Generador de Comprobantes de Nómina", layout="centered")
 st.markdown("""
     <style>
-    /* Fondo general claro */
-    html, body, [data-testid="stAppViewContainer"] {
-        background-color: #bfbfbf;
-        color: #000000;
+    /* --- FONDO GENERAL --- */
+    .stApp {
+        background-color: #bfbfbf !important;  /* Gris claro */
+        color: black !important;
+    }
+    html, body, [class*="css"] {
+        color: black !important;
     }
 
-    /* Títulos */
+    /* --- TITULOS --- */
     h1, h2, h3, h4, h5, h6 {
-        color: #000000;
+        color: black !important;
     }
 
-    /* Inputs, cajas de texto, selectores */
-    .stTextInput > div > input,
-    .stNumberInput input,
-    .stDateInput input,
-    .stSelectbox > div > div {
-        background-color: #ffffff;
-        color: #000000;
-        border: 1px solid #cccccc;
-    }
-
-    /* Botones */
-    button {
-        background-color: #e0e0e0;
-        color: #000000;
-        border: none;
-    }
-    button:hover {
-        background-color: #d0d0d0;
-    }
-
-    /* Sidebar claro */
-    section[data-testid="stSidebar"] {
-        background-color: #eeeeee;
-        color: #000000;
-    }
-
-    /* Tablas y dataframes */
-    .css-1d391kg, .css-1v0mbdj, .stDataFrame {
+    /* --- INPUTS / TEXTAREAS / SELECTS --- */
+    input, textarea, select {
         background-color: #ffffff !important;
-        color: #000000 !important;
-    }
-
-    /* Enlaces */
-    a {
-        color: #0056b3;
-    }
-
-    /* Barras de progreso */
-    .stProgress > div > div > div > div {
-        background-color: #4caf50;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-    <style>
-    /* Estilo general para todos los botones (verde con letras blancas) */
-    .stButton > button {
-        background-color: #2e7d32 !important;
-        color: white !important;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
-    }
-    /* Cambiar color de texto en los mensajes de éxito, advertencia, error e info */
-    .stAlert > div {
         color: black !important;
+        border-radius: 5px;
+        border: 1px solid #cccccc !important;
     }
 
-    /* Fuerza texto negro en todo el uploader */
-    section[data-testid="stFileUploader"] * {
-        color: black !important;
-    }
-
-    /* Fuerza negro al tamaño del archivo cargado */
-    section[data-testid="stFileUploader"] .uploadedFileDetails,
-    section[data-testid="stFileUploader"] .uploadedFileDetails span {
-        color: black !important;
-    }
-
-    /* Opcional: mejora la visibilidad general */
-    .st-emotion-cache-1c7y2kd {
-        color: black !important;
-    }
-                      
-    /* Forzar color negro en etiquetas de texto */
+    /* --- ETIQUETAS DE FORMULARIO --- */
     label, .stTextInput label, .stSelectbox label, .stNumberInput label,
     .stDateInput label, .stFileUploader label, .stTextArea label {
         color: black !important;
         font-weight: 500;
     }
-            
-    /* Botón de descarga también verde */
-    .stDownloadButton > button {
-        background-color: #2e7d32 !important;
+
+    /* --- BOTONES GENERALES VERDES --- */
+    .stButton > button {
+        background-color: #198c19 !important;
         color: white !important;
         border: none;
         padding: 0.5rem 1rem;
         border-radius: 6px;
     }
 
-    /* El último botón visible será rojo (Cerrar sesión) */
+    .stButton > button:hover {
+        background-color: #166f16 !important;
+    }
+
+    /* --- ÚLTIMO BOTÓN (Cerrar sesión) ROJO --- */
     .stButton > button:last-child {
         background-color: #c62828 !important;
         color: white !important;
@@ -271,51 +211,48 @@ st.markdown("""
     .stButton > button:last-child:hover {
         background-color: #b71c1c !important;
     }
-    
-    /* Cambiar color del fondo de la barra lateral */
-    [data-testid="stSidebar"] {
-        background-color: #0b3d0b; /* Verde oscuro */
+
+    /* --- BOTÓN DE DESCARGA --- */
+    .stDownloadButton > button {
+        background-color: #2e7d32 !important;
+        color: white !important;
+        border-radius: 6px;
     }
 
-    /* Fondo de la barra lateral */
+    /* --- SIDEBAR (VERDE OSCURO) --- */
     section[data-testid="stSidebar"] {
-        background-color: #0b3d0b !important;  /* Verde oscuro */
+        background-color: #0b3d0b !important;
     }
-    
-    /* Texto dentro de la barra lateral */
+
     section[data-testid="stSidebar"] * {
         color: white !important;
     }
 
-    /* Opcional: cambiar el borde divisor */
     section[data-testid="stSidebar"]::before {
         background-color: #0b3d0b !important;
     }
-    
 
+    /* --- ALERTAS (mensajes como warning/info/success/error) --- */
+    .stAlert > div {
+        color: black !important;
+    }
+
+    /* --- UPLOADER Y TEXTO DE ARCHIVOS --- */
+    section[data-testid="stFileUploader"] * {
+        color: black !important;
+    }
+
+    .uploadedFileDetails,
+    .uploadedFileDetails span {
+        color: black !important;
+    }
+
+    /* --- BARRAS DE PROGRESO --- */
+    .stProgress > div > div > div > div {
+        background-color: #4caf50;
+    }
     </style>
 """, unsafe_allow_html=True)
-
-st.markdown("""
-    <style>
-    .stApp {
-        background-color: #0b3d0b !important;
-    }
-    html, body, [class*="css"]  {
-        color: white !important;
-    }
-    input, textarea, select {
-        background-color: #145214 !important;
-        color: white !important;
-        border-radius: 5px;
-    }
-    .stButton>button {
-        background-color: #198c19 !important;
-        color: white !important;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
 
 st.title("Generador de Comprobantes de Nómina")
 
