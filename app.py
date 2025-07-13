@@ -327,12 +327,27 @@ if archivo:
         total_rows = len(df)
 
 
-        # ✅ Convertir logo a PNG con PIL si fue subido
+        # ✅ Convertir y optimizar logo si fue subido
         logo_path = None
         if logo:
-            logo_path = os.path.join("recibos_tmp", "logo_temp.png")
-            img = Image.open(logo).convert("RGBA")
-            img.save(logo_path, format="PNG")
+            logo_path = os.path.join("recibos_tmp", "logo_temp.jpg")  # JPG pesa menos que PNG
+
+            # Abrir imagen
+            img = Image.open(logo)
+
+            # Redimensionar si es muy ancha
+            if img.width > 300:
+                height_new = int(img.height * (300 / img.width))
+                img = img.resize((300, height_new), Image.LANCZOS)
+
+            # Convertir a RGB (evita problemas de transparencia en JPG)
+            if img.mode in ("RGBA", "P"):
+                img = img.convert("RGB")
+
+            # Guardar con compresión de calidad media
+            img.save(logo_path, format="JPEG", quality=70, optimize=True)
+
+
 
         for i, row in df.iterrows():
             pdf = FPDF()
