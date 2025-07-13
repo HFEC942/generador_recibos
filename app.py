@@ -35,13 +35,13 @@ USUARIOS = cargar_usuarios()
 if "autenticado" not in st.session_state:
     st.session_state["autenticado"] = False
 
-    
+
 if not st.session_state["autenticado"]:
     st.markdown("""
         <style>
         /* Imagen de fondo solo cuando no se ha autenticado */
         .stApp {
-            background-image: url("https://i.postimg.cc/FsnCxJ63/Dise-o-sin-t-tulo-3.png");
+            background-image: url("https://i.postimg.cc/B6nPntCQ/Dise-o-sin-t-tulo-5.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
