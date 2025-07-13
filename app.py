@@ -28,38 +28,42 @@ def cargar_usuarios():
 
 USUARIOS = cargar_usuarios()
 
-st.markdown("""
-    <style>
-    /* Fondo de la app */
-    .stApp {
-        background-color: #0b3d0b !important; /* Verde oscuro */
-    }
+if not st.session_state["autenticado"]:
+    st.markdown("""
+        <style>
+        /* Imagen de fondo solo cuando no se ha autenticado */
+        .stApp {
+            background-image: url("https://i.postimg.cc/FsnCxJ63/Dise-o-sin-t-tulo-3.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
 
-    /* Color general del texto */
-    html, body, [class*="css"] {
-        color: white !important;
-    }
+        /* Color general del texto */
+        html, body, [class*="css"] {
+            color: white !important;
+        }
 
-    /* Estilo de los campos de entrada */
-    input[type="text"], input[type="password"], textarea, select {
-        background-color: #D3D3D3 !important; /* Gris claro */
-        color: black !important;             /* Texto negro */
-        caret-color: black !important;       /* Cursor negro */
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        padding: 0.4rem;
-    }
+        /* Estilo de los campos de entrada */
+        input[type="text"], input[type="password"], textarea, select {
+            background-color: #D3D3D3 !important;
+            color: black !important;
+            caret-color: black !important;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 0.4rem;
+        }
 
-    /* Estilo del botón */
-    .stButton>button {
-        background-color: #198c19 !important; /* Verde medio */
-        color: white !important;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 5px;
-    }
-    </style>
-""", unsafe_allow_html=True)
+        /* Estilo del botón */
+        .stButton>button {
+            background-color: #000000 !important;
+            color: white !important;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+        </style>
+    """, unsafe_allow_html=True)
 
 
 # 🔐 Función de login
@@ -89,7 +93,7 @@ def login():
 
                     st.markdown(
                         f"<p style='margin-top: 10px;'>"
-                        f"<a href='{enlace}' target='_blank' style='color:#25D366; font-weight:bold;'>"
+                        f"<a href='{enlace}' target='_blank' style='color:#FFFFFF; font-weight:bold;'>"
                         f"Haz clic aquí para solicitar reactivación por WhatsApp</a></p>",
                         unsafe_allow_html=True
                     )
