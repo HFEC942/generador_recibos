@@ -75,6 +75,8 @@ if not st.session_state["autenticado"]:
     """, unsafe_allow_html=True)
 
 
+
+
 # 🔐 Función de login
 def login():
 
