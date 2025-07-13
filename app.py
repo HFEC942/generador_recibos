@@ -318,7 +318,11 @@ archivo = st.file_uploader("Sube tu archivo Excel con los datos", type=["xlsx"])
 if archivo:
     df = pd.read_excel(archivo)
     st.success("Archivo cargado correctamente ✅")
-    st.write("Vista previa de los datos:", df.head())
+    st.markdown("### Vista previa de los datos:")
+    filas_visibles = min(len(df), 5)
+    altura = filas_visibles * 35 + 45  # Ajusta la altura según número de filas
+    st.dataframe(df, height=altura)
+
 
     if st.button("🚀 Generar Recibos en ZIP"):
         os.makedirs("recibos_tmp", exist_ok=True)
