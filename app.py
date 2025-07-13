@@ -12,6 +12,15 @@ import re  # al inicio del archivo si no está ya
 from num2words import num2words
 import urllib.parse
 
+
+
+if "usuario" not in st.session_state:
+    st.session_state["usuario"] = ""
+if "vencimiento" not in st.session_state:
+    st.session_state["vencimiento"] = datetime.today()
+
+
+
 # ✅ Cargar usuarios desde Excel
 @st.cache_data
 def cargar_usuarios():
