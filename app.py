@@ -14,12 +14,6 @@ import urllib.parse
 
 
 
-if "usuario" not in st.session_state:
-    st.session_state["usuario"] = ""
-if "vencimiento" not in st.session_state:
-    st.session_state["vencimiento"] = datetime.today()
-
-
 
 # ✅ Cargar usuarios desde Excel
 @st.cache_data
@@ -37,6 +31,11 @@ def cargar_usuarios():
 
 USUARIOS = cargar_usuarios()
 
+# 🔒 Control de sesión
+if "autenticado" not in st.session_state:
+    st.session_state["autenticado"] = False
+
+    
 if not st.session_state["autenticado"]:
     st.markdown("""
         <style>
@@ -137,9 +136,7 @@ def login():
         unsafe_allow_html=True
     )
 
-# 🔒 Control de sesión
-if "autenticado" not in st.session_state:
-    st.session_state["autenticado"] = False
+
 
 if not st.session_state["autenticado"]:
     login()
